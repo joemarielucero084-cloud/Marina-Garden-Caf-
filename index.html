@@ -26,7 +26,10 @@ body {
     color: #044b02;
     line-height: 1.6;
 }
-
+img{
+max-width:100%;
+height:auto;
+}
 /* HEADER */
 
 header{
@@ -130,10 +133,9 @@ margin-top:90px;
 }
 
 .hero h1{
-font-size:50px;
+font-size:clamp(28px,5vw,50px);
 margin-bottom:15px;
 }
-
 .hero p{
 max-width:600px;
 margin:auto;
@@ -157,7 +159,13 @@ background:#1f4b2c;
 /* SECTIONS */
 
 section{
-padding:80px 10%;
+padding:80px 8%;
+}
+
+@media(max-width:768px){
+section{
+padding:60px 5%;
+}
 }
 
 .section-title{
@@ -338,8 +346,8 @@ z-index:100;
 }
 
 .popup img{
-max-width:90%;
-max-height:90%;
+max-width:95%;
+max-height:85%;
 border-radius:10px;
 }
 
@@ -422,10 +430,14 @@ display:none;
 }
 @media(max-width:768px){
 
+nav ul li{
+width:100%;
+text-align:center;
+}
+
 .logo h2{
 font-size:18px;
 }
-
 .menu-toggle{
 display:block;
 }
@@ -582,7 +594,7 @@ To become a leading dining destination known for its beautiful garden ambiance, 
 
 </section>
 
-<section id="menu">
+
 
 <section id="menu">
 <div class="mv-box">
