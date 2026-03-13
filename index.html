@@ -20,16 +20,44 @@ padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
+/* MOBILE DESIGN */
+@media(max-width:768px){
 
+section{
+padding:60px 6%;
+}
+
+.hero{
+height:40vh;
+margin-top:80px;
+}
+
+.hero h1{
+font-size:26px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.gallery img{
+height:180px;
+}
+
+.event-box{
+padding:20px;
+}
+
+.info-items{
+grid-template-columns:1fr;
+}
+}
 body {
     background: rgba(2, 43, 8, 0.116); /* soft green tint */
     color: #044b02;
     line-height: 1.6;
 }
-img{
-max-width:100%;
-height:auto;
-}
+
 /* HEADER */
 
 header{
@@ -127,18 +155,20 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:rgb(255, 255, 255);
+color:white;
 padding:20px;
-margin-top:90px;
+margin-top:70px;
 }
 
 .hero h1{
-font-size:clamp(28px,5vw,50px);
+font-size:50px;
 margin-bottom:15px;
 }
+
 .hero p{
 max-width:600px;
 margin:auto;
+font-size: 18px;
 }
 
 .btn{
@@ -159,13 +189,7 @@ background:#1f4b2c;
 /* SECTIONS */
 
 section{
-padding:80px 8%;
-}
-
-@media(max-width:768px){
-section{
-padding:60px 5%;
-}
+padding:80px 10%;
 }
 
 .section-title{
@@ -346,8 +370,8 @@ z-index:100;
 }
 
 .popup img{
-max-width:95%;
-max-height:85%;
+max-width:90%;
+max-height:90%;
 border-radius:10px;
 }
 
@@ -381,6 +405,48 @@ cursor:pointer;
 
 .popup .nav:hover{
  color:#97bc62;
+}
+
+/* RESTAURANT INFO STYLE */
+
+.info-section{
+background:white;
+border-radius:10px;
+padding:40px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-group{
+margin-bottom:35px;
+border-bottom:1px solid #ddd;
+padding-bottom:20px;
+}
+
+.info-group:last-child{
+border-bottom:none;
+}
+
+.info-group h3{
+color:#2f6b3f;
+margin-bottom:15px;
+font-size:20px;
+}
+
+.info-items{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px 30px;
+}
+
+.info-items span{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:15px;
+}
+
+.info-items i{
+color:#2f6b3f;
 }
 /* CONTACT */
 
@@ -430,14 +496,10 @@ display:none;
 }
 @media(max-width:768px){
 
-nav ul li{
-width:100%;
-text-align:center;
-}
-
 .logo h2{
 font-size:18px;
 }
+
 .menu-toggle{
 display:block;
 }
@@ -485,6 +547,7 @@ font-size:30px;
 
 }
 
+
 </style>
 </head>
 
@@ -507,9 +570,8 @@ font-size:30px;
 <li><a href="#about">About</a></li>
 <li><a href="#menu">Menu</a></li>
 <li><a href="#events">Events</a></li>
-<li><a href="#contact">Contact</a></li>
 <li><a href="#gallery">Gallery</a></li>
-
+<li><a href="#contact">Contact</a></li>
 <li>
 <a href="https://www.facebook.com/Marinagardencafe2021" target="_blank" class="social-icon facebook">
 <i class="fab fa-facebook-f"></i>
@@ -595,7 +657,6 @@ To become a leading dining destination known for its beautiful garden ambiance, 
 </section>
 
 
-
 <section id="menu">
 <div class="mv-box">
 <h2 class="section-title">Our Menu</h2>
@@ -608,7 +669,9 @@ To become a leading dining destination known for its beautiful garden ambiance, 
 <img src="M4.jpg" onclick="openPopup(this.src)">
 
 
+<img src="M4.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="M5.jpg" class="hidden" onclick="openPopup(this.src)">
+<img src="M6.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="M6.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="M7.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="M8.jpg" class="hidden" onclick="openPopup(this.src)">
@@ -626,11 +689,44 @@ Show More
 </section>
 
 
+<!-- POPUP -->
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+
+<span class="close" onclick="closePopup()">&times;</span>
+
+<span class="nav prev" onclick="prevImage()">&#10094;</span>
+
+<img id="popup-img">
+
+<span class="nav next" onclick="nextImage()">&#10095;</span>
+
+</div>
+<section id="events">
+<div class="mv-box">
+<h2 class="section-title">Event Package</h2>
+
+<div class="gallery" id="eventsGrid">
+
+<img src="PM1.jpg" onclick="openPopup(this.src)">
+<img src="PM2.jpg" onclick="openPopup(this.src)">
+<img src="EM.jpg" onclick="openPopup(this.src)">
+
+</div>
+</div>
+
+<div style="text-align:center;margin-top:30px;">
+
+</div>
+
+</section>
+
 <!-- GALLERY -->
 
 <section id="gallery">
 
-
+<div class="mv-box">
 <h2 class="section-title">Gallery</h2>
 
 <div class="gallery" id="galleryGrid">
@@ -651,6 +747,7 @@ Show More
 <img src="g13.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="g14.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="g15.jpg" class="hidden" onclick="openPopup(this.src)">
+<img src="g16.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="g17.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="g18.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="g19.jpg" class="hidden" onclick="openPopup(this.src)">
@@ -660,13 +757,13 @@ Show More
 <img src="G23.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G24.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G25.jpg" class="hidden" onclick="openPopup(this.src)">
+<img src="G26.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G27.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G28.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G29.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G30.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G31.jpg" class="hidden" onclick="openPopup(this.src)">
 <img src="G32.jpg" class="hidden" onclick="openPopup(this.src)">
-
 
 </div>
 
@@ -675,68 +772,116 @@ Show More
 Show More
 </button>
 </div>
-
-</section>
-<!-- POPUP -->
-
-<!-- POPUP -->
-<div id="popup" class="popup">
-
-<span class="close" onclick="closePopup()">&times;</span>
-
-<span class="nav prev" onclick="prevImage()">&#10094;</span>
-
-<img id="popup-img">
-
-<span class="nav next" onclick="nextImage()">&#10095;</span>
-
 </div>
-<section id="events">
-
-<h2 class="section-title">Events & Celebrations</h2>
-
-<div class="events">
-
-<div class="event-box">
-<i class="fas fa-birthday-cake"></i>
-<h3>Birthday Parties</h3>
-<p>
-Celebrate special birthdays in our relaxing garden atmosphere
-with delicious food and memorable moments.
-</p>
-</div>
-
-<div class="event-box">
-<i class="fas fa-ring"></i>
-<h3>Weddings & Engagements</h3>
-<p>
-A beautiful garden-style venue perfect for intimate weddings,4
-engagement parties, and romantic celebrations.
-</p>
-</div>
-
-<div class="event-box">
-<i class="fas fa-users"></i>
-<h3>Family Gatherings</h3>
-<p>
-Perfect place for reunions, anniversaries, and family get-togethers
-with spacious dining areas.
-</p>
-</div>
-
-<div class="event-box">
-<i class="fas fa-briefcase"></i>
-<h3>Corporate Events</h3>
-<p>
-Host meetings, company dinners, and team celebrations in a calm
-and welcoming environment.
-</p>
-</div>
-
-</div>
-
 </section>
 
+<section id="info">
+
+<h2 class="section-title">Restaurant Information</h2>
+
+<div class="info-section">
+
+<div class="info-group">
+<h3>Service options</h3>
+<div class="info-items">
+<span><i class="fas fa-check"></i> Outdoor seating</span>
+<span><i class="fas fa-check"></i> Onsite services</span>
+<span><i class="fas fa-check"></i> Takeout</span>
+<span><i class="fas fa-check"></i> Dine-in</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Highlights</h3>
+<div class="info-items">
+<span><i class="fas fa-check"></i> Great coffee</span>
+<span><i class="fas fa-check"></i> Great dessert</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Popular for</h3>
+<div class="info-items">
+<span><i class="fas fa-check"></i> Lunch</span>
+<span><i class="fas fa-check"></i> Dinner</span>
+<span><i class="fas fa-check"></i> Solo dining</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Offerings</h3>
+<div class="info-items">
+<span><i class="fas fa-martini-glass"></i> Alcohol</span>
+<span><i class="fas fa-beer"></i> Beer</span>
+<span><i class="fas fa-martini-glass"></i> Cocktails</span>
+<span><i class="fas fa-check"></i> Coffee</span>
+<span><i class="fas fa-check"></i> Quick bite</span>
+<span><i class="fas fa-check"></i> Small plates</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Dining options</h3>
+<div class="info-items">
+<span><i class="fas fa-check"></i> Brunch</span>
+<span><i class="fas fa-check"></i> Lunch</span>
+<span><i class="fas fa-check"></i> Dinner</span>
+<span><i class="fas fa-check"></i> Catering</span>
+<span><i class="fas fa-check"></i> Dessert</span>
+<span><i class="fas fa-check"></i> Seating</span>
+<span><i class="fas fa-check"></i> Table service</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Amenities</h3>
+<div class="info-items">
+<span><i class="fas fa-cocktail"></i> Bar onsite</span>
+<span><i class="fas fa-restroom"></i> Restroom</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Atmosphere</h3>
+<div class="info-items">
+<span><i class="fas fa-check"></i> Casual</span>
+<span><i class="fas fa-check"></i> Cozy</span>
+<span><i class="fas fa-check"></i> Trendy</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Crowd</h3>
+<div class="info-items">
+<span><i class="fas fa-users"></i> Groups</span>
+<span><i class="fas fa-user"></i> Tourists</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Planning</h3>
+<div class="info-items">
+<span><i class="fas fa-check"></i> Accepts reservations</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Payments</h3>
+<div class="info-items">
+<span><i class="fas fa-credit-card"></i> Credit cards</span>
+</div>
+</div>
+
+<div class="info-group">
+<h3>Children</h3>
+<div class="info-items">
+<span><i class="fas fa-child"></i> Good for kids</span>
+</div>
+</div>
+
+</div>
+
+</section>
 <section id="contact">
 
 <h2 class="section-title">Contact Us</h2>
